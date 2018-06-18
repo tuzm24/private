@@ -11,12 +11,12 @@ typedef double Double;
 #define IMAGE_AREA ((IMAGE_WIDTH)*(IMAGE_HEIGHT))
 #define IMAGE_PATH "lena.img"
 #define TWOPI ((3.141592)*(2))
-#define BIT_DEPTH 8
+#define BIT_DEPTH 8 // Only 8 bit... if you want to 10bit or more, plz change not UChar, but Short
 
 
 // Filtering Option
-#define LOWPASS_IN_FREQ 0
-#define HIGHPASS_IN_FREQ 1
+#define LOWPASS_IN_FREQ 0 // default 0
+#define HIGHPASS_IN_FREQ 0 // default 0
 #define STRONG_OF_FILTER 0.2
 
 typedef struct Image {
@@ -113,15 +113,15 @@ FreqImage* DiscreteFourierTrans(Image *img) {
 	int area = width * height;
 	fimg = initFreqImage(width, height);
 	Complex *temp = fimg->img;
-	double two_pi_div = TWOPI / (height*width); // ½Ç¼öÇü ¿¬»êÀ» ÁÙÀÌ±â À§ÇØ ¹Ì¸® ¿¬»ê
+	double two_pi_div = TWOPI / (height*width); // ì‹¤ìˆ˜í˜• ì—°ì‚°ì„ ì¤„ì´ê¸° ìœ„í•´ ë¯¸ë¦¬ ì—°ì‚°
 	UChar *img_addr;
 	for(int u= 0; u<height; u++)
 		for (int v = 0; v < width; v++) {
 			img_addr = img->img;
 			for(int m=0; m<height; m++)
 				for (int n = 0; n < width; n++) {
-					sub = ((m + n) & 1? -1 : 1) * (int)(*img_addr); // ¿¬»ê °¡¼ÓÈ­¸¦ À§ÇØ ºñÆ®¿¬»êÀ» ÅëÇÑ »ïÇ×¿¬»êÀÚ.... »ï°¢ÇÔ¼ö ¾È¿¡ µé¾î°¥ °ªÀ» ÇÑ¹ø¸¸ ¹Ì¸® °è»ê
-					intri = two_pi_div * (u*m*width + v*n*height); // ½Ç¼ö¿¬»êÀ» 1¹øÀ¸·Î ÁÙÀÓ
+					sub = ((m + n) & 1? -1 : 1) * (int)(*img_addr); // ì—°ì‚° ê°€ì†í™”ë¥¼ ìœ„í•´ ë¹„íŠ¸ì—°ì‚°ì„ í†µí•œ ì‚¼í•­ì—°ì‚°ì.... ì‚¼ê°í•¨ìˆ˜ ì•ˆì— ë“¤ì–´ê°ˆ ê°’ì„ í•œë²ˆë§Œ ë¯¸ë¦¬ ê³„ì‚°
+					intri = two_pi_div * (u*m*width + v*n*height); // ì‹¤ìˆ˜ì—°ì‚°ì„ 1ë²ˆìœ¼ë¡œ ì¤„ì„
 					temp->real += sub * cos(intri);
 					temp->image -= sub * sin(intri);
 					img_addr++;
