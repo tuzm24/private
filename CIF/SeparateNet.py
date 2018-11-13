@@ -40,7 +40,7 @@ dataset_div = [256,128,64,32,128,
 for i in range(18):
     dataset_iter[i] = dataset_iter[i] * 300
 
-#array 길이 18
+#array 길이 17
 dataset_name = ['4x4', '4x8', '4x16', '4x32', '8x4', '16x4', '32x4', '8x8', '16x8', '32x8', '8x16', '8x32', '16x16', '16x32', '32x16','32x32', '64x64']
 
 batch_size = 6
@@ -463,4 +463,3 @@ with tf.Session() as sess:
                         break
 
 
-print("NewVersion")

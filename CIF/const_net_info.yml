@@ -1,0 +1,30 @@
+#global info
+CONST_NET_INFO_PATH: './const_net_info.yml'
+NET_INFO_PATH: './net_info.yml'
+LOGGER_PATH: './'
+LOG_PERIOD: 1
+
+
+
+#train info
+dataset_path : ["Pad_Dataset/Block/4x4/4x4", "Pad_Dataset/Block/4x4/4x8", "Pad_Dataset/Block/4x4/4x16", "Pad_Dataset/Block/4x4/4x32", "Pad_Dataset/Block/4x4/8x4",
+                "Pad_Dataset/Block/4x4/16x4", "Pad_Dataset/Block/4x4/32x4", "Pad_Dataset/Block/8x8/8x8", "Pad_Dataset/Block/8x8/16x8", "Pad_Dataset/Block/8x8/32x8",
+                "Pad_Dataset/Block/8x8/8x16", "Pad_Dataset/Block/8x8/8x32", "Pad_Dataset/Block/16x16/16x16", "Pad_Dataset/Block/16x16/16x32", "Pad_Dataset/Block/16x16/32x16",
+                "Pad_Dataset/Block/32x32/32x32", "Pad_Dataset/Block/64x64/64x64", "Pad_Dataset/CTU"]
+MODEL_PATH: './model/'
+TENSORBOARD_LOG_PATH: './tensorboard/'
+INDEX: ['4x4', '4x8', '4x16', '4x32', '8x4', '16x4', '32x4', '8x8', '16x8', '32x8', '8x16', '8x32', '16x16', '16x32', '32x16', '32x32', '64x64']
+BATCH_SIZE: 6
+
+#Dense Block Info
+NUMBER_OF_K : 12 # accumulate dense feature maps number in the dense block
+NB_BETWEEN: 2 #  number of dense layers in the dense block
+NB_ADDITIONAL_LAYERS: 3 # number of additonal dense layers in share net
+
+#Network hyper parameters
+GLOBAL_LEARNING_RATE: 1e-4
+EPSILON: 1e-4
+
+#period info
+SAVE_PERIODE: 20000
+
